@@ -18,7 +18,7 @@
 ## 复现渲染
 
 ```bash
-pip 环境无需安装，纯 Python 标准库：
+无需 pip，纯 Python 标准库（3.8+）：
 python notes_htmlizer.py note.json note.html
 ```
 
