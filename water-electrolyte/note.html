@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>病理生理学（第 10 版）· 水、电解质代谢紊乱 精编笔记</title>
+<style>
+  :root{
+    --bg:#eef2f7;--card:#ffffff;--ink:#12263a;--sub:#5a6b7d;
+    --line:#dde5ee;--brand:#0d4f7c;--brand2:#0e8fa0;
+    --accent:#0891b2;--accent-soft:#e6f6f9;
+    --add:#0b7285;--add-bg:#e8f7f6;--add-line:#14b8a6;
+    --fix:#b45309;--fix-bg:#fff8ec;--fix-line:#f59e0b;
+    --key-bg:#fff3cd;--shadow:0 2px 10px rgba(18,38,58,.06),0 10px 30px rgba(18,38,58,.05);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB","Source Han Sans SC",sans-serif;
+    font-size:15.5px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  }
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(135deg,#0a3350 0%,var(--brand) 45%,var(--brand2) 100%);
+    color:#eaf6fb;padding:46px 40px 40px;position:relative;overflow:hidden;
+  }
+  .hero::after{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),rgba(255,255,255,0) 70%);}
+  .hero::before{content:"";position:absolute;left:-40px;bottom:-120px;width:260px;height:260px;border-radius:50%;border:1.5px solid rgba(255,255,255,.12);}
+  .hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2;}
+  .hero .kicker{display:inline-block;font-size:12.5px;letter-spacing:2px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:20px;margin-bottom:16px;}
+  .hero h1{margin:0 0 10px;font-size:30px;letter-spacing:.5px;font-weight:700;}
+  .hero .sub{font-size:15px;color:#bfe0ec;margin:0;max-width:760px;}
+  .hero .meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;}
+  .hero .meta span{font-size:12.5px;color:#d7eef6;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);padding:4px 11px;border-radius:8px;}
+  /* ===== Layout ===== */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 40px 80px;}
+  .layout{display:grid;grid-template-columns:220px 1fr;gap:34px;margin-top:34px;align-items:start;}
+  /* ===== TOC ===== */
+  nav.toc{position:sticky;top:20px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 11px 11px;box-shadow:var(--shadow);font-size:13.5px;max-height:calc(100vh - 40px);display:flex;flex-direction:column;overflow:hidden;}
+  nav.toc h3{flex:none;margin:0 0 8px;padding:0 5px;font-size:13px;letter-spacing:1.5px;color:var(--sub);text-transform:uppercase;font-weight:700;}
+  nav.toc .links{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent;padding-right:5px;}
+  nav.toc .links::-webkit-scrollbar{width:6px;}
+  nav.toc .links::-webkit-scrollbar-track{background:transparent;}
+  nav.toc .links::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
+  nav.toc .links::-webkit-scrollbar-thumb:hover{background:var(--accent);}
+  nav.toc a{display:block;color:var(--ink);text-decoration:none;padding:6px 9px;border-radius:8px;line-height:1.4;transition:.16s;border-left:3px solid transparent;}
+  nav.toc a:hover{background:var(--accent-soft);border-left-color:var(--accent);color:var(--brand);}
+  nav.toc a.active{background:var(--accent-soft);border-left-color:var(--accent);color:var(--brand);font-weight:600;}
+  nav.toc a .n{color:var(--accent);font-weight:700;margin-right:6px;font-variant-numeric:tabular-nums;}
+  nav.toc a.active .n{color:var(--brand);}
+  /* ===== 目录搜索 + 折叠 + 二级 ==== */
+  nav.toc .toc-search{flex:none;position:relative;margin:0 0 8px;}
+  nav.toc .toc-search input{width:100%;font:inherit;font-size:12.5px;padding:6px 42px 6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);outline:none;transition:.15s;}
+  nav.toc .toc-search input:focus{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft);}
+  nav.toc .toc-search .cnt{position:absolute;right:9px;top:7px;font-size:11px;color:var(--sub);pointer-events:none;font-variant-numeric:tabular-nums;}
+  nav.toc .toc-item{margin-bottom:1px;}
+  nav.toc .toc-row{display:flex;align-items:center;gap:1px;}
+  nav.toc .toc-row a.t{flex:1 1 auto;min-width:0;}
+  nav.toc .fold{flex:none;width:20px;height:22px;padding:0;border:0;background:transparent;color:var(--sub);cursor:pointer;font-size:9px;line-height:1;border-radius:5px;transition:transform .18s, background .15s;}
+  nav.toc .fold:hover{background:var(--accent-soft);color:var(--brand);}
+  nav.toc .fold.open{transform:rotate(90deg);color:var(--brand);}
+  nav.toc .toc-sub{display:none;padding-left:11px;margin:1px 0 3px;}
+  nav.toc .toc-sub.open{display:block;}
+  nav.toc .toc-sub a{font-size:12.5px;color:var(--sub);padding:3px 8px;border-left:2px solid var(--line);border-radius:6px;line-height:1.35;}
+  nav.toc .toc-sub a.lvl-h4{padding-left:16px;font-size:12px;}
+  nav.toc .toc-sub a:hover{color:var(--brand);background:var(--accent-soft);}
+  nav.toc .toc-sub a.active{color:var(--brand);border-left-color:var(--accent);background:var(--accent-soft);font-weight:600;}
+  nav.toc .hide{display:none !important;}
+  nav.toc .toc-empty{display:none;padding:10px 9px;color:var(--sub);font-size:12.5px;}
+  nav.toc.no-result .toc-empty{display:block;}
+  /* ===== 目录分篇（仅当章节带 part 字段时生效） ===== */
+  nav.toc .toc-part{margin:0 0 6px;border:1px solid var(--line);border-radius:10px;background:#fbfdff;overflow:hidden;}
+  nav.toc .part-row{display:flex;align-items:center;gap:6px;width:100%;padding:6px 7px;font:inherit;color:var(--ink);border-left:3px solid transparent;transition:background .15s;}
+  nav.toc .part-row:hover{background:var(--accent-soft);border-radius:7px;}
+  nav.toc .toc-part.open .part-row{border-left-color:var(--brand);background:linear-gradient(90deg,var(--accent-soft),transparent);}
+  nav.toc .part-row .pn{flex:none;font-size:10.5px;font-weight:700;letter-spacing:.4px;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));padding:1px 6px;border-radius:20px;}
+  nav.toc .part-row a.pt{flex:1 1 auto;min-width:0;font-size:13px;font-weight:700;line-height:1.35;color:var(--ink);text-decoration:none;}
+  nav.toc .part-row a.pt:hover{color:var(--brand);text-decoration:underline;}
+  nav.toc .part-row .pn-cnt{flex:none;font-size:10.5px;color:var(--sub);}
+  nav.toc .part-row .ptog{flex:none;width:20px;height:20px;padding:0;border:0;background:transparent;font:inherit;font-size:9px;line-height:1;color:var(--sub);cursor:pointer;border-radius:5px;transition:transform .18s, background .15s;}
+  nav.toc .part-row .ptog:hover{background:#fff;color:var(--brand);}
+  nav.toc .toc-part.open .part-row .ptog{transform:rotate(180deg);color:var(--brand);}
+  nav.toc .part-body{display:none;padding:4px 6px 6px;}
+  nav.toc .toc-part.open .part-body{display:block;}
+  /* ===== 正文篇分隔条 ===== */
+  .part-band{margin:26px 0 4px;padding:14px 18px;border-radius:12px;background:linear-gradient(135deg,#0a3350,var(--brand) 55%,var(--brand2));color:#eaf6fb;box-shadow:var(--shadow);}
+  .part-band .pb-n{font-size:11px;letter-spacing:1.5px;opacity:.75;text-transform:uppercase;}
+  .part-band .pb-t{font-size:19px;font-weight:700;line-height:1.35;margin-top:2px;}
+  .part-band .pb-d{font-size:12.5px;opacity:.82;margin-top:4px;line-height:1.6;}
+  /* ===== 顶部篇导航 pills ===== */
+  .partnav{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;}
+  .partnav a{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:20px;font-size:12.5px;text-decoration:none;color:var(--brand);background:var(--card);border:1px solid var(--line);box-shadow:0 1px 3px rgba(18,38,58,.05);transition:.15s;}
+  .partnav a:hover{background:var(--accent-soft);border-color:var(--accent);transform:translateY(-1px);}
+  .partnav a i{font-style:normal;font-size:10.5px;font-weight:700;color:#fff;background:var(--brand);border-radius:10px;padding:0 5px;}
+  /* ===== 阅读进度条 ===== */
+  .pbar{position:fixed;left:0;top:0;z-index:60;width:100%;height:3px;pointer-events:none;}
+  .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand2),var(--accent));box-shadow:0 1px 4px rgba(13,79,124,.35);}
+  /* ===== Sections ===== */
+  main{min-width:0;}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px 24px;margin-bottom:22px;box-shadow:var(--shadow);scroll-margin-top:20px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin:0 0 16px;}
+  .sec-head .chip{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-weight:700;font-size:15px;box-shadow:0 4px 10px rgba(13,79,124,.28);}
+  .sec-head h2{margin:0;font-size:20px;letter-spacing:.3px;}
+  .sec-head .en{font-size:12.5px;color:var(--sub);font-weight:400;margin-left:2px;}
+  h3.sub-h{font-size:16px;margin:24px 0 10px;color:var(--brand);padding-left:11px;border-left:4px solid var(--accent);line-height:1.3;}
+  h4.mini-h{font-size:14.5px;margin:16px 0 6px;color:var(--ink);}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;padding-left:22px;}
+  li{margin:5px 0;}
+  li::marker{color:var(--accent);font-weight:600;}
+  b,strong{color:#0a3350;}
+  .hl{background:linear-gradient(transparent 58%,var(--key-bg) 58%);font-weight:600;padding:0 1px;}
+  .mono{font-family:"Cascadia Mono","Consolas","SFMono-Regular",monospace;background:#f1f6fa;border:1px solid var(--line);padding:1px 7px;border-radius:6px;font-size:13.5px;color:#0d4f7c;white-space:nowrap;}
+  code{font-family:"Cascadia Mono","Consolas",monospace;}
+  /* ===== Callouts ===== */
+  .note{border-radius:11px;padding:13px 16px 13px 15px;margin:14px 0;border-left:4px solid var(--accent);background:var(--accent-soft);font-size:14.5px;}
+  .note .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.6px;padding:2px 9px;border-radius:6px;margin-right:8px;background:var(--accent);color:#fff;vertical-align:1px;}
+  .add{border-radius:11px;padding:13px 16px 13px 15px;margin:14px 0;border-left:4px solid var(--add-line);background:var(--add-bg);font-size:14.5px;}
+  .add .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.6px;padding:2px 9px;border-radius:6px;margin-right:8px;background:var(--add);color:#fff;vertical-align:1px;}
+  .fix{border-radius:11px;padding:13px 16px 13px 15px;margin:14px 0;border-left:4px solid var(--fix-line);background:var(--fix-bg);font-size:14.5px;}
+  .fix .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.6px;padding:2px 9px;border-radius:6px;margin-right:8px;background:var(--fix);color:#fff;vertical-align:1px;}
+  .fix s{color:#a16207;text-decoration-thickness:1.5px;}
+  .fix .to{color:#0b7285;font-weight:700;}
+  /* ===== Tables ===== */
+  .tbl-wrap{overflow-x:auto;margin:14px 0;border-radius:11px;border:1px solid var(--line);}
+  table{border-collapse:collapse;width:100%;font-size:14px;background:#fff;min-width:420px;}
+  th{background:linear-gradient(180deg,#0d4f7c,#0e6b8a);color:#fff;font-weight:600;text-align:left;padding:9px 13px;font-size:13.5px;letter-spacing:.3px;white-space:nowrap;}
+  td{padding:9px 13px;border-top:1px solid var(--line);vertical-align:top;}
+  tbody tr:nth-child(even){background:#f7fafd;}
+  tbody tr:hover{background:#eef7fb;}
+  td.c,th.c{text-align:center;}
+  /* ===== Tree ===== */
+  .tree{font-family:"Cascadia Mono","Consolas",monospace;background:#fbfdff;border:1px solid var(--line);border-radius:11px;padding:14px 18px;font-size:13.5px;line-height:1.85;color:#2c3e50;white-space:pre;overflow-x:auto;}
+  /* ===== Grid cards ===== */
+  .grid{display:grid;gap:13px;margin:14px 0;}
+  .grid.g2{grid-template-columns:1fr 1fr;}
+  .grid.g3{grid-template-columns:repeat(3,1fr);}
+  .mini{border:1px solid var(--line);border-radius:12px;padding:14px 15px;background:#fbfdff;transition:.16s;}
+  .mini:hover{border-color:#b8d8e6;box-shadow:0 4px 14px rgba(13,79,124,.08);transform:translateY(-1px);}
+  .mini h4{margin:0 0 6px;font-size:14px;color:var(--brand);display:flex;align-items:center;gap:7px;}
+  .mini h4 .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;}
+  .mini p{margin:4px 0;font-size:13.8px;color:#2c3e50;line-height:1.65;}
+  /* ===== Flow ===== */
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0;}
+  .flow .node{background:#fff;border:1.5px solid var(--accent);color:var(--brand);border-radius:10px;padding:9px 14px;font-size:13.5px;font-weight:600;box-shadow:0 2px 8px rgba(8,145,178,.1);}
+  .flow .arrow{color:var(--accent);font-weight:700;font-size:16px;}
+  /* ===== footer & back ===== */
+  .back{position:fixed;right:26px;bottom:26px;z-index:50;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;display:grid;place-items:center;text-decoration:none;box-shadow:0 8px 22px rgba(13,79,124,.35);font-size:20px;transition:.18s;}
+  .back:hover{transform:translateY(-2px);}
+  footer{text-align:center;color:var(--sub);font-size:13px;padding:22px 20px 40px;border-top:1px solid var(--line);max-width:1080px;margin:0 auto;}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;margin:4px 0 0;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;color:var(--sub);}
+  .legend i{width:12px;height:12px;border-radius:4px;display:inline-block;}
+  /* ===== Responsive ===== */
+  @media (max-width:880px){
+    .wrap,.hero-inner{padding-left:20px;padding-right:20px;}
+    .hero{padding:34px 20px 30px;}
+    .hero h1{font-size:23px;}
+    .layout{grid-template-columns:1fr;gap:18px;}
+    nav.toc{position:static;max-height:none;overflow:visible;}
+    nav.toc .links{display:block;overflow:visible;max-height:none;padding-right:0;}
+    nav.toc .toc-sub{padding-left:14px;}
+    .grid.g2,.grid.g3{grid-template-columns:1fr;}
+  }
+  @media print{
+    body{background:#fff;font-size:12.5px;}
+    .hero{background:#0d4f7c !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    nav.toc,.back,.pbar{display:none;}
+    .layout{display:block;}
+    section.card{box-shadow:none;border:1px solid #ccc;page-break-inside:avoid;margin-bottom:12px;}
+    .mini:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="pbar"><i></i></div>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <span class="kicker">病理生理学 · 水、电解质代谢紊乱</span>
+    <h1>病理生理学（第 10 版）· 水、电解质代谢紊乱 精编笔记</h1>
+    <p class="sub">本篇以手写笔记为骨架，对照人民卫生出版社《病理生理学》（第 10 版）补全与订正：三类脱水横向对比、低/高钾血症完整机制与临床表现、反常性尿机制，并附完整勘误表。原稿缺失的「等渗性脱水」「低钾血症」「高钾血症」三大板块已重点补齐。</p>
+    <div class="meta"><span>教材：病理生理学 第 10 版（人卫）</span><span>章节：第 2 章 水、电解质代谢紊乱</span><span>关键词：低渗/高渗/等渗脱水 · 水中毒 · 水肿 · 低钾血症 · 高钾血症 · 反常性尿</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="legend">
+    <span><i style="background:#e8f7f6;border:1px solid #14b8a6"></i>补齐/新增内容</span>
+    <span><i style="background:#fff8ec;border:1px solid #f59e0b"></i>原稿订正</span>
+    <span><i style="background:#fff3cd"></i>考试重点句</span>
+  </div>
+
+  
+
+  <div class="layout">
+    <nav class="toc"><h3>目录</h3><div class="toc-search"><input type="text" placeholder="搜索章节 / 小节…" autocomplete="off" spellcheck="false"><span class="cnt"></span></div><div class="links"><div class="toc-item"><div class="toc-row"><a class="t" href="#s1"><span class="n">01</span>一、体液与渗透压的生理基础</a><button class="fold" type="button" title="展开/折叠小节">▶</button></div><div class="toc-sub"><a class="sub lvl-h3" href="#s1-0">1.1 每日水出入平衡（补充）</a><a class="sub lvl-h3" href="#s1-1">1.2 体液容量的三大调节系统</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s2"><span class="n">02</span>二、水钠代谢障碍的分类体系</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s3"><span class="n">03</span>三、低容量性低钠血症（低渗性脱水）</a><button class="fold" type="button" title="展开/折叠小节">▶</button></div><div class="toc-sub"><a class="sub lvl-h3" href="#s3-0">3.1 病因与机制</a><a class="sub lvl-h3" href="#s3-1">3.2 机能代谢变化与临床表现</a><a class="sub lvl-h3" href="#s3-2">3.3 防治原则</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s4"><span class="n">04</span>四、低容量性高钠血症（高渗性脱水）</a><button class="fold" type="button" title="展开/折叠小节">▶</button></div><div class="toc-sub"><a class="sub lvl-h3" href="#s4-0">4.1 病因</a><a class="sub lvl-h3" href="#s4-1">4.2 机能代谢变化与临床表现</a><a class="sub lvl-h3" href="#s4-2">4.3 防治原则</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s5"><span class="n">05</span>五、等渗性脱水（原稿完全缺失）★</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s6"><span class="n">06</span>六、三类脱水横向对比（速记表）</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s7"><span class="n">07</span>七、水中毒（高容量性低钠血症）</a><button class="fold" type="button" title="展开/折叠小节">▶</button></div><div class="toc-sub"><a class="sub lvl-h3" href="#s7-0">7.1 病因</a><a class="sub lvl-h3" href="#s7-1">7.2 机能代谢变化与临床表现</a><a class="sub lvl-h3" href="#s7-2">7.3 防治原则</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s8"><span class="n">08</span>八、水肿（积液）</a><button class="fold" type="button" title="展开/折叠小节">▶</button></div><div class="toc-sub"><a class="sub lvl-h3" href="#s8-0">8.1 定义与分类</a><a class="sub lvl-h3" href="#s8-1">8.2 发病机制</a><a class="sub lvl-h4" href="#s8-2">（一）血管内外液体交换失调</a><a class="sub lvl-h4" href="#s8-3">（二）机体内外交换失调（肾性水钠潴留）</a><a class="sub lvl-h3" href="#s8-4">8.3 水肿的特点</a><a class="sub lvl-h3" href="#s8-5">8.4 水肿对机体的影响</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s9"><span class="n">09</span>九、钾的正常代谢</a><button class="fold" type="button" title="展开/折叠小节">▶</button></div><div class="toc-sub"><a class="sub lvl-h3" href="#s9-0">9.1 钾的生理功能</a><a class="sub lvl-h3" href="#s9-1">9.2 钾的平衡</a><a class="sub lvl-h3" href="#s9-2">9.3 钾平衡的调节</a><a class="sub lvl-h4" href="#s9-3">（一）跨细胞转移——泵-漏机制</a><a class="sub lvl-h4" href="#s9-4">（二）肾对钾排泄的调节</a><a class="sub lvl-h3" href="#s9-5">9.4 钾代谢紊乱的分类</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s10"><span class="n">10</span>十、低钾血症（原稿缺失）★</a><button class="fold" type="button" title="展开/折叠小节">▶</button></div><div class="toc-sub"><a class="sub lvl-h3" href="#s10-0">10.1 原因与机制</a><a class="sub lvl-h3" href="#s10-1">10.2 对机体的影响（核心）</a><a class="sub lvl-h4" href="#s10-2">（一）神经肌肉：兴奋性降低 ★</a><a class="sub lvl-h4" href="#s10-3">（二）心肌：心律失常 ★</a><a class="sub lvl-h4" href="#s10-4">（三）肾损害与酸碱失衡 ★</a><a class="sub lvl-h3" href="#s10-5">10.3 补钾原则（★必背）</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s11"><span class="n">11</span>十一、高钾血症（原稿完全缺失）★</a><button class="fold" type="button" title="展开/折叠小节">▶</button></div><div class="toc-sub"><a class="sub lvl-h3" href="#s11-0">11.1 原因与机制</a><a class="sub lvl-h3" href="#s11-1">11.2 对机体的影响</a><a class="sub lvl-h4" href="#s11-2">（一）神经肌肉</a><a class="sub lvl-h4" href="#s11-3">（二）心肌——最危险 ★</a><a class="sub lvl-h4" href="#s11-4">（三）酸碱失衡</a><a class="sub lvl-h3" href="#s11-5">11.3 急救处理（★急诊必考）</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s12"><span class="n">12</span>十二、低钾 vs 高钾 终极对比</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s13"><span class="n">13</span>十三、考点速记</a><button class="fold" type="button" title="展开/折叠小节">▶</button></div><div class="toc-sub"><a class="sub lvl-h3" href="#s13-0">13.1 必背数值</a><a class="sub lvl-h3" href="#s13-1">13.2 一句话鉴别</a><a class="sub lvl-h3" href="#s13-2">13.3 水肿机制五问自查</a></div></div><div class="toc-item"><div class="toc-row"><a class="t" href="#s14"><span class="n">14</span>十四、原稿勘误与补缺说明</a></div></div></div><div class="toc-empty">没有匹配的章节</div></nav>
+    <main>
+<section class="card" id="s1"><div class="sec-head"><div class="chip">01</div><h2>一、体液与渗透压的生理基础 <span class="en">Body fluid basics</span></h2></div><div class="tree">体液（占体重约 60%，成年男性）
+├── 细胞内液 ICF（40%）—— 阳离子以 <b>K⁺</b> 为主，阴离子以 <b>HPO₄²⁻</b> 为主
+└── 细胞外液 ECF（20%）—— 阳离子以 <b>Na⁺</b> 为主，阴离子以 <b>Cl⁻</b> 为主
+      ├── 组织间液（15%）
+      └── 血浆（5%）</div>
+<div class="tbl-wrap"><table><thead><tr><th>项目</th><th>数值 / 要点</th></tr></thead><tbody><tr><td><b>血浆渗透压正常值</b></td><td><b>280–310 mmol/L（mOsm/L）</b></td></tr><tr><td><b>决定渗透压的主要溶质</b></td><td>体液中起渗透作用的溶质主要是 <b>电解质</b>；<span class="hl">Na⁺ 及其伴随阴离子决定细胞外液渗透压 90% 以上</span></td></tr><tr><td><b>各部分体液渗透压关系</b></td><td><span class="hl">各部分体液渗透压基本相等</span>（水可自由通过细胞膜，驱使达平衡）</td></tr><tr><td><b>每日摄入与排出量</b></td><td><b>2000–2500 ml</b>（正常成人出入量平衡）</td></tr><tr><td><b>血容量调节</b></td><td><b>肾素 – 血管紧张素 – 醛固酮系统（RAAS）</b></td></tr></tbody></table></div>
+<h3 class="sub-h" id="s1-0">1.1 每日水出入平衡（补充）</h3>
+<div class="grid g2"><div class="mini"><h4><span class="dot"></span>摄入（约 2000–2500 ml）</h4><p>饮水 <b>1000–1500 ml</b></p><p>食物含水 <b>700–900 ml</b></p><p>代谢水（内生水） <b>300 ml</b></p></div><div class="mini"><h4><span class="dot"></span>排出（约 2000–2500 ml）</h4><p>尿 <b>1000–1500 ml</b></p><p>皮肤蒸发 <b>约 500 ml</b></p><p>呼吸蒸发 <b>约 350 ml</b></p><p>粪便 <b>约 150 ml</b></p></div></div>
+<div class="add"><span class="tag">补</span><b>临床推论</b>：<b>不显性失水</b>（皮肤蒸发 + 呼吸蒸发约 850 ml）是持续性的、不含电解质的纯水丢失。故 <span class="hl">"完全禁食水的患者，每日仍有约 850 ml 的纯水丢失→若不补水，必然发展为高渗性脱水"</span>。气管切开患者呼吸失水可增至 800–1000 ml/d。</div>
+<div class="note"><span class="tag">渗透压计算</span><p><b>血浆渗透压（mOsm/L）≈ 2 × [Na⁺] + 血糖(mmol/L) + 尿素氮(mmol/L)</b></p><p>简化记忆：渗透压主要由 <b>Na⁺ 及其阴离子贡献</b>，约为血钠值的 2 倍。</p><p>临床意义：血糖极高（如高渗高血糖综合征）可显著抬高实测渗透压，造成 <b>渗透性脱水</b>——此时血钠未必升高甚至降低，但渗透压很高。</p></div>
+<h3 class="sub-h" id="s1-1">1.2 体液容量的三大调节系统</h3>
+<div class="grid g3"><div class="mini"><h4><span class="dot"></span>① 渗透压调节</h4><p>感受器：<b>下丘脑渗透压感受器</b></p><p>效应：ADH（抗利尿激素）分泌 + 口渴</p><p>→ 调节 <b>晶体渗透压</b>（280–310）</p></div><div class="mini"><h4><span class="dot"></span>② 容量调节</h4><p>感受器：<b>容量/压力感受器</b>（心房、颈动脉窦、肾入球小动脉）</p><p>效应：RAAS、交感、ANP</p><p>→ 调节 <b>血容量 / Na⁺ 总量</b></p></div><div class="mini"><h4><span class="dot"></span>③ 肾脏执行</h4><p><b>肾是调节水、电解质与酸碱的最终执行器官</b></p><p>每日滤过约 180 L，排出 1.5 L</p><p><span class="hl">几乎所有水钠紊乱最终取决于肾功能</span></p></div></div>
+<div class="note"><span class="tag">关键区分</span><p><span class="hl"><b>渗透压感受的是「浓度」，容量感受的是「总量」，二者由不同感受器、不同激素系统分管</b></span>。</p><p>典型考题：<b>低渗性脱水时，渗透压下降抑制 ADH → 早期多尿；但容量下降又刺激 ADH → 晚期少尿</b>。这正是两套系统在「打架」，晚期的容量信号压过了渗透压信号。</p></div></section>
+<section class="card" id="s2"><div class="sec-head"><div class="chip">02</div><h2>二、水钠代谢障碍的分类体系 <span class="en">Classification</span></h2></div><p>第 10 版按 <span class="hl"><b>血钠浓度 + 体液容量</b></span> 二维组合分类。这是理解全部水钠紊乱的骨架。</p>
+<div class="tbl-wrap"><table><thead><tr><th>血钠状态</th><th>低容量（脱水）</th><th>等容量</th><th>高容量（水过多）</th></tr></thead><tbody><tr><td><b>低钠血症</b><br>（&lt;135 mmol/L）</td><td><b>低容量性低钠血症</b><br>= <span class="hl">低渗性脱水</span> ★</td><td>等容量性低钠血症<br>（SIADH 等）</td><td><b>高容量性低钠血症</b><br>= <span class="hl">水中毒</span> ★<br>心衰 / 肾衰 / 肝硬化</td></tr><tr><td><b>正常血钠</b><br>（135–145）</td><td><b>等渗性脱水</b> ★<br>（呕吐、腹泻、烧伤）</td><td>正常</td><td><b>水肿</b> ★</td></tr><tr><td><b>高钠血症</b><br>（&gt;145 mmol/L）</td><td><b>低容量性高钠血症</b><br>= <span class="hl">高渗性脱水</span> ★</td><td>等容量性高钠血症<br>（尿崩症）</td><td>高容量性高钠血症<br>（盐中毒、Cushing）</td></tr></tbody></table></div>
+<div class="add"><span class="tag">补</span>原稿只写了「根据渗透压分类」「根据血钠浓度和溶液量分」两条线索，<b>没有给出完整矩阵</b>。上表即为二维组合的完整展开——<b>9 格</b>，其中带 ★ 的是本章核心考点。</div>
+<div class="note"><span class="tag">为什么这样分类</span><p>这样分类是因为 <b>治疗方向完全不同</b> 且往往相反：</p><p>- <b>低钠血症</b>：核心问题是「水相对过多」→ 限水 / 补钠</p><p>- <b>高钠血症</b>：核心问题是「水相对不足」→ 补水</p><p>- <b>低容量</b>：需补容量</p><p>- <b>高容量</b>：需限水 + 利尿</p><p><span class="hl"><b>不同格子，扩容还是限水截然相反，用错方向会直接加重病情</b></span></p></div></section>
+<section class="card" id="s3"><div class="sec-head"><div class="chip">03</div><h2>三、低容量性低钠血症（低渗性脱水） <span class="en">Hypotonic dehydration</span></h2></div><div class="tbl-wrap"><table><thead><tr><th>诊断要点</th><th>数值 / 表现</th></tr></thead><tbody><tr><td><b>血浆渗透压</b></td><td><b>&lt; 280 mmol/L</b></td></tr><tr><td><b>血清 Na⁺</b></td><td><b>&lt; 130 mmol/L</b></td></tr><tr><td><b>核心机制</b></td><td><span class="hl"><b>失钠 &gt; 失水</b></span>，<b>伴细胞外液量减少</b></td></tr><tr><td><b>别名</b></td><td>低渗性脱水、低容量性低钠血症</td></tr></tbody></table></div>
+<div class="fix"><span class="tag">订</span><s>失钠大于失水，<b>扳手</b>细胞外液量减少</s> → <span class="to">失钠大于失水，<b>伴</b>细胞外液量减少</span> <span style="color:#5a6b7d">— 「扳手」为笔误／识别错误，应为「伴」</span></div>
+<h3 class="sub-h" id="s3-0">3.1 病因与机制</h3>
+<div class="note"><span class="tag">总病因</span><p><span class="hl"><b>一句话：任何丢失大量含电解质的体液后，只补充了水而没有补充钠。</b></span></p><p>这是低渗性脱水区别于其他两种脱水的关键——它是一种 <b>医源性色彩很重</b> 的脱水。</p></div>
+<div class="tbl-wrap"><table><thead><tr><th>类别</th><th>具体原因</th></tr></thead><tbody><tr><td><b>① 经肾丢失</b></td><td>① <b>长期/大量使用高效（袢）利尿剂</b>（呋塞米）——抑制髓袢升支 Na⁺ 重吸收② <b>肾功能不全</b>（肾小管重吸收功能障碍）③ 肾上腺皮质功能不全（醛固酮缺乏，Addison 病）④ 渗透性利尿（高血糖、甘露醇）</td></tr><tr><td><b>② 肾外丢失</b></td><td>① <b>严重呕吐、腹泻、胃肠减压、肠瘘</b>（消化液钠含量高）② <b>大面积烧伤、出血、胸腹水引流</b>③ 大量出汗后只饮淡水</td></tr><tr><td><b>③ 处理不当（关键）</b></td><td><span class="hl">上述丢失后 <b>只补水未补钠</b> → 低渗</span><br>这是低渗性脱水最常见的形成路径</td></tr></tbody></table></div>
+<h3 class="sub-h" id="s3-1">3.2 机能代谢变化与临床表现</h3>
+<div class="flow"><span class="node">失钠 &gt; 失水</span><span class="arrow">→</span><span class="node">细胞外液渗透压↓</span><span class="arrow">→</span><span class="node">细胞外液量↓</span><span class="arrow">→</span><span class="node">水自细胞外转入细胞内</span><span class="arrow">→</span><span class="node">细胞水肿 + 细胞外液进一步减少</span></div>
+<div class="tbl-wrap"><table><thead><tr><th>层次</th><th>机制与表现</th></tr></thead><tbody><tr><td><b>① 细胞外液减少</b></td><td>失钠使细胞外液呈低渗，<b>水转入细胞内</b> → 细胞外液进一步减少（雪上加霜）<br>▶ <b>组织间液下降</b> → 明显 <b>脱水体征</b>（皮肤弹性差、眼窝凹陷、静脉塌陷）<br>▶ <b>血容量下降</b> → <b>微循环障碍 → 低血容量性休克</b></td></tr><tr><td><b>② 细胞水肿</b></td><td>特别是 <b>脑细胞水肿</b> → <b>中枢神经系统功能障碍</b>：嗜睡、淡漠、意识模糊、昏迷、抽搐</td></tr><tr><td><b>③ 无渴感</b> ★</td><td><span class="hl">低渗状态下渗透压感受器不被兴奋 → <b>无口渴</b></span><br>（与高渗性脱水的剧烈口渴形成鲜明对比）</td></tr><tr><td><b>④ 尿量变化</b> ★</td><td><span class="hl"><b>早期：多尿</b>（低渗抑制 ADH 分泌）→ <b>晚期：少尿</b>（容量严重不足，容量感受器压倒渗透压感受器，ADH 大量分泌）</span></td></tr><tr><td><b>⑤ 尿钠变化</b> ★</td><td><b>经肾失钠者：尿钠升高（&gt;20 mmol/L）</b><br><b>肾外失钠者：尿钠降低（&lt;10 mmol/L）</b>（肾脏代偿性保钠）<br><span class="hl">这是判断失钠途径的关键指标</span></td></tr></tbody></table></div>
+<div class="note"><span class="tag">临床对比</span><p><b>低渗性脱水 vs 高渗性脱水 的临床表现方向几乎完全相反</b>：</p><p>- 低渗：<b>无明显口渴</b>、早期多尿、脱水体征重（组织间液丢得多）、<b>易早期休克</b></p><p>- 高渗：<b>剧烈口渴</b>、少尿、脱水体征轻、<b>晚期才休克</b></p><p><span class="hl"><b>「口渴与否」是床旁最快区分二者的指标</b></span></p></div>
+<h3 class="sub-h" id="s3-2">3.3 防治原则</h3>
+<ol><li><b>积极防治原发病</b>（停用利尿剂、纠正肾上腺皮质功能不全等）</li><li><b>适当补液</b>——纠正细胞外液低渗与容量不足</li><li><span class="hl"><b>原则上给予等渗溶液补液</b></span>（如 0.9% NaCl、平衡盐溶液）；重症休克者先扩容恢复灌注，必要时辅以少量高渗盐水</li></ol>
+<div class="add"><span class="tag">补</span><b>为什么原则上用等渗液？</b> 因为低渗性脱水患者同时存在 <b>容量不足（低容量）</b> 和 <b>渗透压过低（低钠）</b>。低渗液（如 5% 葡萄糖）进入体内后葡萄糖被代谢，等于补充自由水，会 <b>进一步稀释血钠</b>、加重细胞水肿。因此须用含钠的等渗溶液。</div></section>
+<section class="card" id="s4"><div class="sec-head"><div class="chip">04</div><h2>四、低容量性高钠血症（高渗性脱水） <span class="en">Hypertonic dehydration</span></h2></div><div class="tbl-wrap"><table><thead><tr><th>诊断要点</th><th>数值 / 表现</th></tr></thead><tbody><tr><td><b>血浆渗透压</b></td><td><b>&gt; 310 mmol/L</b></td></tr><tr><td><b>血清 Na⁺</b></td><td><b>&gt; 150 mmol/L</b></td></tr><tr><td><b>核心机制</b></td><td><span class="hl"><b>失水 &gt; 失钠</b></span>，<b>细胞内、外液均失水</b></td></tr><tr><td><b>别名</b></td><td>高渗性脱水、低容量性高钠血症</td></tr></tbody></table></div>
+<h3 class="sub-h" id="s4-0">4.1 病因</h3>
+<div class="grid g2"><div class="mini"><h4><span class="dot"></span>① 水摄入不足</h4><p><b>无水可饮</b>：沙漠、海上遇难、水源断绝</p><p><b>不能饮水</b>：昏迷、意识障碍、吞咽困难、婴幼儿</p><p><b>口渴感障碍</b>：下丘脑渗透压感受器受损</p><p><span class="hl">禁食水患者 → 忘记补液是医源性常见原因</span></p></div><div class="mini"><h4><span class="dot"></span>② 水丢失过多</h4><p><b>经肾</b>：尿崩症（中枢性/肾性）、渗透性利尿（高血糖、甘露醇）</p><p><b>经皮肤</b>：高热、大量出汗、烧伤创面蒸发</p><p><b>经呼吸道</b>：过度通气、气管切开</p><p><b>经消化道</b>：呕吐、腹泻（丢失低渗液时失水&gt;失钠）</p></div></div>
+<h3 class="sub-h" id="s4-1">4.2 机能代谢变化与临床表现</h3>
+<div class="flow"><span class="node">失水 &gt; 失钠</span><span class="arrow">→</span><span class="node">细胞外液渗透压↑</span><span class="arrow">→</span><span class="node">水自细胞内转出</span><span class="arrow">→</span><span class="node">细胞内液减少 = 细胞脱水</span><span class="arrow">→</span><span class="node">各器官因脱水功能障碍</span></div>
+<div class="tbl-wrap"><table><thead><tr><th>受累系统</th><th>表现与机制</th></tr></thead><tbody><tr><td><b>口渴</b> ★</td><td><span class="hl"><b>剧烈口渴</b></span>（渗透压↑ + 有效循环血量↓ 双重刺激口渴中枢）——最能提示本病</td></tr><tr><td><b>汗腺细胞脱水</b> ★</td><td><span class="hl"><b>散热功能障碍 → 脱水热</b></span><br>（尤其婴幼儿与高热患者）</td></tr><tr><td><b>唾液 / 口腔黏膜脱水</b></td><td><b>口舌干燥、口渴难忍</b></td></tr><tr><td><b>神经细胞脱水</b> ★</td><td>脑细胞脱水、脑体积缩小 → <b>幻觉、躁动、谵妄</b>；可致 <b>脑出血</b>（脑组织牵拉撕裂静脉）<br>婴幼儿可出现 <b>烦躁、惊厥</b></td></tr><tr><td><b>肾脏</b></td><td>ADH 分泌增多 → <b>尿少、尿比重高</b></td></tr><tr><td><b>循环</b></td><td>晚期才出现 <b>循环衰竭 / 休克</b>（因细胞内液可外移代偿血容量，故低血容量出现较晚）</td></tr></tbody></table></div>
+<div class="note"><span class="tag">为什么口感咋—脱水就发热</span><p>这是容易被忽略的一条链：<b>汗腺细胞本身脱水 → 排汗能力下降 → 散热受阻 → 体温升高（脱水热）</b>。</p><p><span class="hl">注意区分：「脱水热」不是感染性发热，退烧药无效，补液后才退</span>。儿科尤其常见。</p><p>完整链条：<b>失水&gt;失钠 → 细胞外液高渗 → 汗腺细胞脱水 → 出汗减少 → 散热功能下降 → 脱水热</b>。</p></div>
+<h3 class="sub-h" id="s4-2">4.3 防治原则</h3>
+<ol><li><b>防治原发病</b>（控制高热、治疗尿崩症、停用高渗性利尿剂等）</li><li><span class="hl"><b>以补水为主、补钠为辅</b></span>——首选 <b>5% 葡萄糖溶液</b> 或 <b>低渗（0.45%）盐水</b></li><li><b>补液速度不宜过快</b>——过快纠正高钠血症可致 <b>脑水肿</b>（见下方警告）</li><li>适当补钾（纠正过程中钾向细胞内转移，可诱发低钾）</li></ol>
+<div class="fix"><span class="tag">危险警告</span><s>快速完全纠正高钠血症</s> → <span class="to">缓慢纠正，<span class="hl">一般血钠下降速度应 ≤ 0.5 mmol/L/h，24 小时内下降幅度 ≤ 10–12 mmol/L</span></span> <span style="color:#5a6b7d">— 高渗状态下脑细胞已产生「特发性渗透物」（肌醇、牛磺酸等）以适应高渗；若血钠骤降，细胞外相对低渗 → 水大量进入脑细胞 → 脑水肿、抽搐、昏迷</span></div></section>
+<section class="card" id="s5"><div class="sec-head"><div class="chip">05</div><h2>五、等渗性脱水（原稿完全缺失）★ <span class="en">Isotonic dehydration</span></h2></div><div class="add"><span class="tag">重大补缺</span><p><span class="hl"><b>原稿最大的结构性遗漏：只讲了低渗性、高渗性脱水，没有「等渗性脱水」。</b></span></p><p>三类脱水历来作为一组对比考查，且 <b>等渗性脱水是临床上最常见</b> 的一种。此节为完全新增。</p></div>
+<div class="tbl-wrap"><table><thead><tr><th>项目</th><th>要点</th></tr></thead><tbody><tr><td><b>定义</b></td><td>水与钠 <span class="hl"><b>成比例丢失</b></span>，血钠浓度与血浆渗透压 <b>维持在正常范围</b></td></tr><tr><td><b>血钠</b></td><td><b>135–145 mmol/L</b>（正常）</td></tr><tr><td><b>血浆渗透压</b></td><td><b>280–310 mmol/L</b>（正常）</td></tr><tr><td><b>核心机制</b></td><td>丢失的是 <b>等渗液体</b> → 主要丢失 <b>细胞外液</b>，细胞内液变化不明显</td></tr><tr><td><b>病因</b></td><td>① <b>严重呕吐、腹泻、胃肠减压、肠瘘</b>（最常见）<br>② <b>大面积烧伤早期</b>（血浆样液体丢失）<br>③ <b>腹膜炎、胰腺炎</b>（大量炎性渗出 accumula 于体腔）<br>④ 大量胸腔/腹腔积液引流</td></tr><tr><td><b>临床表现</b></td><td>兼有脱水与容量不足表现：<b>口渴</b>（较弱）、尿少、皮肤干燥弹性差、<b>血压下降</b>；<br><span class="hl">不处理可向两头转化</span>：<br>▶ 若只补水 → 转为 <b>低渗性脱水</b>；<br>▶ 若不显性失水继续 → 转为 <b>高渗性脱水</b></td></tr><tr><td><b>治疗</b></td><td><span class="hl"><b>补充偏低渗溶液</b></span>，如 <b>平衡盐溶液</b>、乳酸林格液；或按 2/3 张含钠液补充<br>（不能只用葡萄糖水，否则转为低渗性脱水）</td></tr></tbody></table></div>
+<div class="note"><span class="tag">记性口诀</span><p><b>三类脱水对比（必背）</b>：</p><p>- <b>低渗丢钠多</b>：盐丢得多 → 口渴没有、水体细胞内、早期多尿、早期休克</p><p>- <b>高渗丢水多</b>：水丢得多 → 口渴剧烈、水体细胞外、少尿、脱水热、晚期休克</p><p>- <b>等渗都丢</b>：比例丢、血钠正常、最常见、可两头转化</p></div></section>
+<section class="card" id="s6"><div class="sec-head"><div class="chip">06</div><h2>六、三类脱水横向对比（速记表） <span class="en">Dehydration comparison</span></h2></div><div class="tbl-wrap"><table><thead><tr><th>对比项</th><th>高渗性脱水</th><th>低渗性脱水</th><th>等渗性脱水</th></tr></thead><tbody><tr><td><b>别称</b></td><td>低容量性高钠血症</td><td>低容量性低钠血症</td><td>—</td></tr><tr><td><b>血钠</b></td><td><b>&gt; 150</b></td><td><b>&lt; 130</b></td><td><b>135–145（正常）</b></td></tr><tr><td><b>血浆渗透压</b></td><td><b>&gt; 310</b></td><td><b>&lt; 280</b></td><td><b>280–310（正常）</b></td></tr><tr><td><b>失水与失钠</b></td><td><b>失水 &gt; 失钠</b></td><td><b>失钠 &gt; 失水</b></td><td><b>等比例丧失</b></td></tr><tr><td><b>主要丢失部位</b></td><td>细胞内液为主（细胞脱水）</td><td>细胞外液为主</td><td>细胞外液为主</td></tr><tr><td><b>口渴</b> ★</td><td><b>明显（剧烈）</b></td><td><b>无 / 不明显</b></td><td>有（较轻）</td></tr><tr><td><b>尿量</b></td><td>减少、比重高</td><td><span class="hl"><b>早期多尿，晚期少尿</b></span></td><td>减少</td></tr><tr><td><b>脱水体征</b></td><td>较轻</td><td><b>重</b>（皮肤弹性差、眼窝凹陷明显）</td><td>较重</td></tr><tr><td><b>休克</b></td><td><b>晚期出现</b></td><td><b>早期出现</b></td><td>可出现</td></tr><tr><td><b>特征表现</b></td><td><b>脱水热、幻觉躁动</b></td><td><b>脑细胞水肿→嗜睡昏迷</b></td><td>可双向转化</td></tr><tr><td><b>补液选择</b> ★</td><td><b>补水为主</b>：5% 葡萄糖 / 0.45% 盐水</td><td><b>等渗</b>：0.9% NaCl / 平衡盐</td><td><b>偏低渗</b>：平衡盐 / 2:1 液</td></tr></tbody></table></div>
+<div class="note"><span class="tag">一句话总结</span><p><span class="hl"><b>先看血钠定类型，再看容量定程度。</b></span></p><p>- 补液方向：<b>低钠补钠、高钠补水、等钠补平衡盐</b>。</p><p>- <b>「口渴」和「休克早晚」是床旁区分高渗/低渗的两个抓手</b>。</p></div></section>
+<section class="card" id="s7"><div class="sec-head"><div class="chip">07</div><h2>七、水中毒（高容量性低钠血症） <span class="en">Water intoxication</span></h2></div><div class="tbl-wrap"><table><thead><tr><th>诊断要点</th><th>数值 / 表现</th></tr></thead><tbody><tr><td><b>核心机制</b></td><td><span class="hl"><b>水潴留 &gt;&gt;&gt; 钠潴留</b>（或纯水摄入过多）</span>，导致 <b>稀释性低钠血症</b></td></tr><tr><td><b>血钠</b></td><td><b>&lt; 130 mmol/L</b></td></tr><tr><td><b>血浆渗透压</b></td><td><b>&lt; 280 mmol/L</b></td></tr><tr><td><b>体液状态</b></td><td>细胞外液 <b>容量增多</b> 且 <b>低渗</b></td></tr></tbody></table></div>
+<h3 class="sub-h" id="s7-0">7.1 病因</h3>
+<div class="grid g2"><div class="mini"><h4><span class="dot"></span>① 水摄入过多</h4><p><b>无盐水灌肠</b>（大面积黏膜吸收纯水）</p><p><b>饮水过多</b>：精神性多饮、婴幼儿喂水过多</p><p><b>静脉输入低盐/无盐液体过多过快</b></p><p>（如大量 5% GS）</p><p>✅ 原稿已列出，此处补充解释</p></div><div class="mini"><h4><span class="dot"></span>② 水排出减少</h4><p><b>急性肾衰竭少尿期</b> ← 最常见、最危险</p><p><b>ADH 分泌异常增多</b>（SIADH）</p><p><b>严重心衰、肝硬化</b>（有效循环血量↓→ADH↑）</p><p>✅ 补充：<span class="hl">肾功能正常者极难发生水中毒</span></p></div></div>
+<div class="add"><span class="tag">补</span><b>关键前提</b>：肾脏有强大的排水能力（每日可排出 15–20 L 稀释尿）。因此 <span class="hl"><b>肾功能正常者，单纯大量饮水几乎不会水中毒</b></span>。水中毒的发生 <b>基本都伴随肾功能不全或 ADH 异常增多</b>。这是理解本病病因的核心。</div>
+<h3 class="sub-h" id="s7-1">7.2 机能代谢变化与临床表现</h3>
+<div class="flow"><span class="node">水潴留 &gt;&gt; 钠潴留</span><span class="arrow">→</span><span class="node">细胞外液渗透压↓</span><span class="arrow">→</span><span class="node">水向细胞内转移</span><span class="arrow">→</span><span class="node">细胞水肿（尤其脑细胞）</span><span class="arrow">→</span><span class="node">颅内压增高</span></div>
+<div class="tbl-wrap"><table><thead><tr><th>表现</th><th>说明</th></tr></thead><tbody><tr><td><b>脑细胞水肿</b> ★</td><td><span class="hl">这是水中毒 <b>最致命</b> 的后果</span><br>颅内压增高 → <b>头痛、恶心、喷射性呕吐</b><br>神经精神症状 → <b>神志错乱、嗜睡、谵妄</b><br>→ 严重时发生 <b>脑疝</b>，可致呼吸停止、死亡</td></tr><tr><td><b>细胞外液增多</b></td><td>组织间液增多 → <b>皮下水肿</b>；血容量增多 → <b>血压可升高</b>（与脱水相反）</td></tr><tr><td><b>其他</b></td><td>体重增加、乏力、淡漠；严重致肺水肿（尤其肾功能衰竭时）</td></tr></tbody></table></div>
+<div class="note"><span class="tag">喷射性呕吐</span><p>原稿提到的 <b>喷射性呕吐</b> 是 <span class="hl"><b>颅内压增高的典型体征</b></span>（区别于呕吐中枢刺激的普通呕吐：喷射性呕吐 <b>无恶心前驱、呈喷射状、与进食无关</b>）。</p><p>出现此体征提示颅内压已显著升高，属 <b>危急信号</b>。</p></div>
+<h3 class="sub-h" id="s7-2">7.3 防治原则</h3>
+<ol><li><b>积极防治原发病</b></li><li><span class="hl"><b>肾衰、心衰者严格限制水摄入</b></span>（入水量 = 前日尿量 + 500 ml，这是肾衰补液公式）</li><li><b>重症者补充高渗盐水</b>（3%–5% NaCl）——提高细胞外渗透压，将细胞内水「拉」出来</li><li><b>利尿、脱水</b>：使用 <b>呋塞米</b>（排自由水）+ 必要时甘露醇脱水降颅压</li><li><b>最有效手段：透析</b>（尤其肾衰竭所致者）</li></ol>
+<div class="fix"><span class="tag">危险警告</span><s>快速纠正慢性低钠血症至正常</s> → <span class="to">纠正速度应严格控制，<span class="hl">慢性低钠血症纠正速度一般 ≤ 4–8 mmol/L/24h</span></span> <span style="color:#5a6b7d">— 过快纠正可致脑桥中央髓鞘溶解（渗透性脱髓鞘综合征，ODS），表现为构音障碍、吞咽困难、四肢瘫痪甚至闭锁综合征，常不可逆</span></div></section>
+<section class="card" id="s8"><div class="sec-head"><div class="chip">08</div><h2>八、水肿（积液） <span class="en">Edema</span></h2></div><h3 class="sub-h" id="s8-0">8.1 定义与分类</h3>
+<div class="tbl-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><b>定义</b></td><td><span class="hl">过多的体液在 <b>组织间隙或体腔</b> 内积聚</span><br>（体腔积聚时特称 <b>积液/积水</b>，如胸水、腹水、心包积液）</td></tr><tr><td><b>按范围分</b></td><td><b>全身性水肿</b>、<b>局部性水肿</b></td></tr><tr><td><b>按发生器官分</b></td><td><b>皮下水肿、脑水肿、肺水肿</b>、喉头水肿等</td></tr><tr><td><b>按压表现分</b></td><td><b>隐性水肿</b>（压前已有组织液增多，体重增加可达 10%）、<b>显性水肿 = 凹陷性水肿</b></td></tr></tbody></table></div>
+<h3 class="sub-h" id="s8-1">8.2 发病机制</h3>
+<div class="note"><span class="tag">总纲</span><p><span class="hl">两大环节：① 血管内、外液体交换失调；② 机体内、外液体交换失调（即肾的水钠调节失衡）。</span></p><p>所有水肿的发生，最终都可归入这两条。</p></div>
+<h4 class="mini-h" id="s8-2">（一）血管内外液体交换失调</h4>
+<div class="tbl-wrap"><table><thead><tr><th>力量方向</th><th>组成</th></tr></thead><tbody><tr><td><b>促滤过力</b></td><td>① <b>毛细血管流体静压</b><br>② <b>组织间液胶体渗透压</b></td></tr><tr><td><b>促回流力</b></td><td>① <b>组织间液流体静压</b><br>② <b>血浆胶体渗透压</b></td></tr><tr><td><b>公式</b></td><td><span class="hl"><b>有效滤过压 = 促滤过力 − 促回流力</b></span><br>正常情况下略为正值，滤出的少量液体由 <b>淋巴回流</b>（约 2–4 L/d）代偿</td></tr></tbody></table></div>
+<div class="tbl-wrap"><table><thead><tr><th>机制</th><th>病因举例与说明</th></tr></thead><tbody><tr><td><b>① 血管内流体静压增高</b></td><td><b>充血性心力衰竭</b>（静脉压升高）<br>肝硬化门脉高压、静脉血栓、静脉曲张</td></tr><tr><td><b>② 血浆胶体渗透压降低</b></td><td><span class="hl">原因为血浆白蛋白减少</span>：<br>▶ <b>蛋白质合成减少</b>（肝硬化、营养不良）<br>▶ <b>蛋白质丧失增多</b>（肾病综合征 → 大量蛋白尿）<br>▶ <b>蛋白质分解代谢增加</b>（慢性消耗性疾病）<br><br>✅ 注：原稿写「合成减小」，规范表述为 <b>合成减少</b></td></tr><tr><td><b>③ 微血管通透性增高</b></td><td><b>各种炎症</b>（炎性介质使内皮间隙增大）<br>过敏反应、烧伤 → 血浆蛋白外漏 → 组织胶体渗透压升高</td></tr><tr><td><b>④ 淋巴回流受阻</b></td><td>丝虫病（象皮肿）、肿瘤压迫、手术切除淋巴结<br>→ 蛋白质-rich 淋巴液淤积</td></tr></tbody></table></div>
+<h4 class="mini-h" id="s8-3">（二）机体内外交换失调（肾性水钠潴留）</h4>
+<div class="tbl-wrap"><table><thead><tr><th>机制</th><th>说明</th></tr></thead><tbody><tr><td><b>① 肾小球滤过率（GFR）下降</b></td><td>急性肾炎、慢性肾衰竭 → 滤过减少，水钠排出减少</td></tr><tr><td><b>② 肾小管重吸收增多</b></td><td><b>近曲小管重吸收水钠增多</b>：<br>▶ <b>心房钠尿肽（ANP）分泌减少</b>（有效循环血量↓ → 心房牵张↓ → ANP↓）<br>▶ <b>肾小球滤过分数（FF）增加</b>：出球小动脉收缩程度 &gt; 入球小动脉 → 管周毛细血管胶体渗透压升高、静水压降低 → 近曲小管重吸收增加<br><br><b>远曲小管、集合管重吸收增多</b>：RAAS 激活（醛固酮↑）、ADH↑</td></tr><tr><td><b>③ 有效循环血量减少</b> ★</td><td><span class="hl"><b>「有效循环血量减少」是本组机制的触发起点</b></span><br>心衰 / 肾病的共同通路：有效循环血量↓ → 肾灌注↓ → RAAS + ADH 激活 → 水钠潴留 → （但潴留的液体进入组织间隙，血容量并未真正恢复）→ 形成 <b>水肿不断加重的恶性循环</b></td></tr></tbody></table></div>
+<div class="note"><span class="tag">核心理解</span><p><b>为什么心衰患者明明全身水肿，肾脏却仍在保水保钠？</b></p><p>因为肾脏感受的是 <b>有效循环血量</b>，而非总体液量。心衰时心输出量↓ → 肾脏误判为「血量不足」→ 激活 RAAS 拼命保钠保水。</p><p><span class="hl">水肿液去了组织间隙，却没有补回有效循环血量 → 保水信号持续存在 </span> → 水肿越来越重。这就是 <b>「充盈不足」学说</b>，也是 <b>利尿剂 + 强心治疗</b> 的理论依据。</p></div>
+<h3 class="sub-h" id="s8-4">8.3 水肿的特点</h3>
+<div class="tbl-wrap"><table><thead><tr><th>项目</th><th>渗出液 vs 漏出液 ★</th></tr></thead><tbody><tr><td><b>漏出液（transudate）</b></td><td><b>蛋白含量低（&lt; 25 g/L）</b>、比重低（&lt; 1.015）、<span class="hl"><b>细胞数少（&lt; 100 × 10⁶/L）</b></span><br>成因：<b>非炎性</b>——血浆胶体渗透压降低、静水压增高<br>见于：心衰、肝硬化、肾病综合征</td></tr><tr><td><b>渗出液（exudate）</b></td><td><b>蛋白含量高（&gt; 30 g/L）</b>、比重高（&gt; 1.018）、<span class="hl"><b>细胞数多（&gt; 500 × 10⁶/L）</b></span><br>成因：<b>微血管通透性增高</b>（炎症）<br>见于：感染、肿瘤、结缔组织病</td></tr><tr><td><b>临床意义</b></td><td><span class="hl"><b>鉴别漏出液与渗出液是胸腹水诊断的第一步</b></span></td></tr></tbody></table></div>
+<div class="fix"><span class="tag">订正（重要）</span><s>水肿液的性状：渗出液（毛细血管通透性增高所致 → 炎性水肿）；<b>漏出液（有细胞出现）</b></s> → <span class="to">水肿液的性状：
+<b>渗出液</b>（微血管通透性↑所致 → 炎性水肿，富含蛋白与细胞）；
+<span class="hl"><b>漏出液</b>：蛋白与细胞成分均 <b>少</b>（是非炎性滤过液）</span></span> <span style="color:#5a6b7d">— 这是知识性错误。漏出液的定义恰恰是「蛋白少、细胞少」，渗出液才是「蛋白多、细胞多」。若按原稿记忆，鉴别诊断会完全反向。</span></div>
+<div class="tbl-wrap"><table><thead><tr><th>项目</th><th>特点</th></tr></thead><tbody><tr><td><b>水肿皮肤特点</b></td><td>皮肤肿胀、<b>弹性差</b>、皱纹变浅/消失；<span class="hl">按压出现凹陷 → <b>凹陷性水肿（显性水肿）</b></span></td></tr><tr><td><b>隐性水肿</b></td><td><span class="hl">在出现凹陷之前已有组织液增多，<b>体重增加可达原体重的 10%</b></span>（原稿数值正确）<br>临床提示：<b>每日测体重</b>是发现隐性水肿最灵敏的方法</td></tr><tr><td><b>全身性水肿分布特点</b> ★</td><td>▶ <b>肾性水肿</b>：<b>从颜面部（眼睑）开始</b>，发展迅速，肿处 <b>软而移动度大</b>（颜面部结缔组织疏松）<br>▶ <b>心性水肿</b>：<b>从双下肢足踝向上发展</b>，与重力相关，发展较迅速，移动度小<br>▶ <b>肝性水肿</b>：以 <b>腹水</b> 为主要表现，发展速度慢</td></tr></tbody></table></div>
+<h3 class="sub-h" id="s8-5">8.4 水肿对机体的影响</h3>
+<div class="grid g2"><div class="mini"><h4><span class="dot"></span>✅ 有利方面</h4><p><b>炎性水肿</b> 可以：</p><p>① 稀释毒素</p><p>② 运送抗体、补体、药物至病灶</p><p>③ 其中的纤维蛋白可限制病原扩散</p><p>→ 是机体的防御反应之一</p></div><div class="mini"><h4><span class="dot"></span>❌ 不利影响</h4><p><b>① 细胞营养障碍</b>：水肿液使毛细血管与细胞间距离增大，氧与营养物质弥散距离延长；压力压迫微血管 → 营养血流减少</p><p><b>② 重要器官急性重度水肿 —— 致命</b>：</p><p>▶ <b>脑水肿 → 脑疝</b>（压迫生命中枢）</p><p>▶ <b>喉头水肿 → 窒息</b></p><p>▶ <b>肺水肿 → 气体交换障碍、呼吸衰竭</b></p></div></div></section>
+<section class="card" id="s9"><div class="sec-head"><div class="chip">09</div><h2>九、钾的正常代谢 <span class="en">Potassium homeostasis</span></h2></div><h3 class="sub-h" id="s9-0">9.1 钾的生理功能</h3>
+<ul><li><b>维持细胞新陈代谢</b>：参与 <b>糖原合成</b>、<b>蛋白质合成</b>（钾是多种酶的辅因子）</li><li><b>保持静息膜电位</b>，参与动作电位形成 → 支配神经肌肉与心肌的电活动</li><li><b>调节渗透压与酸碱平衡</b>（与细胞外 H⁺ 交换）</li></ul>
+<h3 class="sub-h" id="s9-1">9.2 钾的平衡</h3>
+<div class="tbl-wrap"><table><thead><tr><th>环节</th><th>要点</th></tr></thead><tbody><tr><td><b>摄入</b></td><td>食物 <b>50–120 mmol/d</b>（约合氯化钾 <b>3–6 g/d</b>）</td></tr><tr><td><b>吸收</b></td><td><b>肠道</b>（小肠为主，吸收迅速、完全）</td></tr><tr><td><b>分布</b></td><td><span class="hl"><b>细胞内占 90% 以上</b>（实际约 98%），细胞外仅约 <b>2%</b></span><br>体内总含钾量 <b>50–55 mmol/kg 体重</b>（成人约 150 g）<br>⚠️ <b>血清钾 ≠ 体内总钾</b>——见下方注记</td></tr><tr><td><b>排泄</b></td><td><b>肾 80%–90%</b>（主要）；<b>肠道 10%</b>；<b>皮肤极少</b><br>结肠排钾机制 <b>类似肾主细胞泌 K⁺</b>；<span class="hl"><b>肾衰竭时结肠排钾显著增加</b>，成为重要代偿</span><br>汗液钾 <b>平均约 9 mmol/L</b>（高热大汗时丢失可观）</td></tr><tr><td><b>排泄特点</b> ★</td><td><span class="hl"><b>多吃多排、少吃少排、不吃也排</b></span><br>即使完全不摄入钾，肾每日仍排出约 <b>20–40 mmol（≈1.5–3 g KCl）</b></td></tr></tbody></table></div>
+<div class="note"><span class="tag">为什么「不吃也排」如此重要</span><p><span class="hl"><b>临床推论：禁食 &gt; 2–3 天者必须常规补钾。</b></span></p><p>- 术后、昏迷、肠梗阻患者若只补葡萄糖盐水 <b>而不补钾</b>，必然在数日内出现低钾血症。</p><p>- 静脉输注大量含糖液体还会 <b>刺激胰岛素分泌 → 钾向细胞内转移</b>，雪上加霜。</p><p>这是外科术后最常见的电解质失衡之一。</p></div>
+<h3 class="sub-h" id="s9-2">9.3 钾平衡的调节</h3>
+<h4 class="mini-h" id="s9-3">（一）跨细胞转移——泵-漏机制</h4>
+<div class="tbl-wrap"><table><thead><tr><th>机制</th><th>说明</th></tr></thead><tbody><tr><td><b>泵</b></td><td><b>Na⁺-K⁺ 泵（Na⁺-K⁺-ATP 酶）</b>：消耗 ATP，将 <b>K⁺ 泵入细胞内</b>、Na⁺ 泵出</td></tr><tr><td><b>漏</b></td><td>K⁺ 顺浓度差经 <b>各种 K⁺ 通道</b> 漏出细胞</td></tr><tr><td><b>净效应</b></td><td><span class="hl">泵与漏的动态平衡，精确地维持 <b>细胞外液的钾浓度</b></span><br>这是 <b>快速调节</b>（数分钟至数小时）</td></tr></tbody></table></div>
+<div class="tbl-wrap"><table><thead><tr><th>影响因素</th><th>对钾跨细胞转移的作用</th></tr></thead><tbody><tr><td><b>胰岛素</b> ★</td><td><span class="hl"><b>促进 K⁺ 进入细胞</b></span>（激活 Na⁺-K⁺-ATP 酶）<br>临床：用胰岛素+葡萄糖治疗高钾血症</td></tr><tr><td><b>儿茶酚胺（β₂ 激动）</b></td><td>促进 K⁺ 进入细胞（β₂ 受体阻断剂则相反）</td></tr><tr><td><b>细胞外液 K⁺ 浓度</b></td><td>升高时促进泵摄取</td></tr><tr><td><b>酸碱平衡</b> ★</td><td><span class="hl"><b>H⁺-K⁺ 交换</b>：酸中毒 → H⁺ 入细胞、K⁺ 出细胞 → <b>血钾升高</b>；碱中毒则相反 → <b>血钾降低</b></span></td></tr><tr><td><b>血浆渗透压升高</b></td><td>（如高血糖）→ 水移出细胞、K⁺ 随之移出 → 血钾升高</td></tr><tr><td><b>运动 / 组织分解</b></td><td>肌肉活动释放 K⁺；大量溶血、挤压伤、肿瘤溶解释放 K⁺</td></tr></tbody></table></div>
+<h4 class="mini-h" id="s9-4">（二）肾对钾排泄的调节</h4>
+<p>肾小球滤过的钾 <b>90%–95% 已在近曲小管与髓袢重吸收</b>。<span class="hl">尿钾的多少主要取决于 <b>远曲小管、集合管的分泌</b></span>（主细胞分泌 K⁺，闰细胞重吸收 K⁺）。</p>
+<div class="tbl-wrap"><table><thead><tr><th>影响因素</th><th>作用</th></tr></thead><tbody><tr><td><b>① 醛固酮</b> ★</td><td><span class="hl"><b>保钠排钾</b>——最重要的调节激素</span><br>促进远曲小管/集合管主细胞重吸收 Na⁺、分泌 K⁺</td></tr><tr><td><b>② 细胞外液 K⁺ 浓度</b></td><td>升高 → 直接刺激醛固酮分泌 + 直接促进集合管泌钾</td></tr><tr><td><b>③ 远端原尿流速</b> ★</td><td><span class="hl">流速加快 <b>促进排钾</b></span><br>机制：冲刷掉小管腔内堆积的 K⁺，维持浓度梯度<br>临床：袢利尿剂/噻嗪类 → 流速↑ → <b>排钾增多 → 低钾血症</b></td></tr><tr><td><b>④ 酸碱平衡状态</b></td><td>酸中毒 <b>抑制</b>排钾（H⁺ 与 K⁺ 竞争分泌）；碱中毒 <b>促进</b>排钾</td></tr></tbody></table></div>
+<div class="add"><span class="tag">补</span><p><b>为什么「远端原尿流速」是重要的？</b> 这解释了许多临床现象：</p><p>- <b>利尿剂致低钾</b>：不只是醛固酮的作用，流速加快本身就是强力的排钾因素。</p><p>- <b>容量不足时</b> 近端重吸收增加 → 到达远端的液体少 → 远端流速慢 → <b>排钾减少</b>。</p><p>- <span class="hl">这是理解「低钾血症为什么常伴随呕吐腹泻/利尿」的关键机制环节</span>。</p></div>
+<h3 class="sub-h" id="s9-5">9.4 钾代谢紊乱的分类</h3>
+<div class="grid g2"><div class="mini"><h4><span class="dot"></span>① 细胞内钾异常</h4><p><b>细胞内钾过多</b>：一般无明显影响</p><p><b>细胞内钾缺乏</b>：导致代谢障碍</p><p>⚠️ <b>可发生在血清钾正常时</b>——总钾亏空未必表现为低钾血症</p></div><div class="mini"><h4><span class="dot"></span>② 血清钾异常 ★</h4><p><b>低钾血症</b>：血清钾 <b>&lt; 3.5 mmol/L</b></p><p><b>高钾血症</b>：血清钾 <b>&gt; 5.5 mmol/L</b></p><p><span class="hl">正常血清钾：<b>3.5–5.5 mmol/L</b></span></p></div></div>
+<div class="note"><span class="tag">血清钾 ≠ 总钾</span><p><span class="hl"><b>血清钾只占体内总钾的 2%，是一个「快照」而非「库存」指标。</b></span></p><p>- 缺钾时，细胞内钾先外移代偿 → <b>血清钾可正常</b>（隐性缺钾）</p><p>- 反之，酸中毒（K⁺ 外移）时 <b>血清钾可升高，但总钾可能亏空</b></p><p>临床推论：判断体内是否真正缺钾，需结合 <b>摄入史、丢失途径、尿钾、血气分析</b>，而不能只看一次血清钾。</p></div></section>
+<section class="card" id="s10"><div class="sec-head"><div class="chip">10</div><h2>十、低钾血症（原稿缺失）★ <span class="en">Hypokalemia</span></h2></div><div class="add"><span class="tag">重大补缺</span><p><span class="hl"><b>原稿仅列出「低钾血症：」标题，内容完全空白。</b></span></p><p>低钾血症是本章 <b>最重要、考得最多</b> 的疾病之一。以下按「原因 → 机制 → 临床表现 → 补钾原则」完整补齐。</p></div>
+<div class="tbl-wrap"><table><thead><tr><th>项目</th><th>要点</th></tr></thead><tbody><tr><td><b>定义</b></td><td><b>血清钾 &lt; 3.5 mmol/L</b></td></tr><tr><td><b>本质</b></td><td>可因 <b>总钾减少</b>（真性缺钾）或 <b>钾向细胞内转移</b>（分布异常）所致，或两者兼有</td></tr></tbody></table></div>
+<h3 class="sub-h" id="s10-0">10.1 原因与机制</h3>
+<div class="tbl-wrap"><table><thead><tr><th>类别</th><th>具体原因</th></tr></thead><tbody><tr><td><b>① 钾摄入不足</b></td><td>长期不能进食（昏迷、术后禁食、晚期肿瘤）、厌食症；<br><span class="hl">静脉营养液中未补钾</span></td></tr><tr><td><b>② 钾丢失过多</b><br>（最常见）</td><td><b>经消化道</b>：<span class="hl">严重呕吐、腹泻、胃肠减压、肠瘘</span>（消化液含钾丰富，约 4–10 mmol/L）<br><br><b>经肾</b>：<br>▶ <b>长期/大量使用排钾利尿剂</b>（呋塞米、噻嗪类）← 最常见<br>▶ <b>醛固酮增多症</b>（原发性/继发性，如肝硬化、心衰时继发性 RAAS 激活）<br>▶ <b>肾小管酸中毒</b>（Ⅰ型、Ⅱ型）<br>▶ <b>镁缺乏</b> → Na⁺-K⁺-ATP 酶功能障碍 → 钾重吸收减少（难治性低钾的常见原因）<br>▶ 渗透性利尿（高血糖、甘露醇）<br><br><b>经皮肤</b>：大量出汗（汗液约 9 mmol/L）、大面积烧伤</td></tr><tr><td><b>③ 钾向细胞内转移</b><br>（分布异常）</td><td><b>碱中毒</b>（H⁺-K⁺ 交换）<br><b>胰岛素过量</b>或高血糖胰岛素治疗<br><b>β₂ 受体激动剂</b>（沙丁胺醇雾化）、茶碱<br><b>家族性周期性麻痹（低钾型）</b><br>钡中毒、棉酚中毒（阻断钾通道，罕见）<br><span class="hl">此类总钾不减少，血清低但总量可正常</span></td></tr></tbody></table></div>
+<h3 class="sub-h" id="s10-1">10.2 对机体的影响（核心）</h3>
+<div class="note"><span class="tag">总机制</span><span class="hl">低钾对机体的影响可归结为三大方面：① 神经肌肉兴奋性降低；② 心肌电生理异常；③ 肾损害与酸碱失衡。</span></div>
+<h4 class="mini-h" id="s10-2">（一）神经肌肉：兴奋性降低 ★</h4>
+<div class="tbl-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><b>机制</b></td><td><span class="hl">细胞外 K⁺ 降低 → 细胞膜外正电荷减少 → 静息电位负值 <b>增大</b>（超极化阻滞）→ 与阈电位距离增大 → <b>兴奋性降低</b></span></td></tr><tr><td><b>骨骼肌</b> ★</td><td><span class="hl"><b>四肢软弱无力 → 弛缓性瘫痪（软瘫）</b>，以下肢最明显</span><br>严重累及 <b>呼吸肌 → 呼吸衰竭</b>（致死原因之一）<br><b>腱反射减弱或消失</b></td></tr><tr><td><b>平滑肌</b></td><td>胃肠蠕动减弱 → <b>腹胀、食欲不振、恶心 → 麻痹性肠梗阻</b>（肠鸣音减弱/消失）</td></tr><tr><td><b>发展规律</b></td><td>一般 <b>血清钾 &lt; 3.0 mmol/L</b> 才出现明显肌无力；<b>&lt; 2.5 mmol/L</b> 时可致严重软瘫、横纹肌溶解</td></tr></tbody></table></div>
+<h4 class="mini-h" id="s10-3">（二）心肌：心律失常 ★</h4>
+<div class="tbl-wrap"><table><thead><tr><th>电生理 / 表现</th><th>说明</th></tr></thead><tbody><tr><td><b>兴奋性</b></td><td><b>↑</b>（心肌在轻度低钾时兴奋性增高）</td></tr><tr><td><b>传导性</b></td><td><b>↓</b>（可致房室传导阻滞）</td></tr><tr><td><b>自律性</b></td><td><b>↑</b>（易发生异位起搏）</td></tr><tr><td><b>收缩性</b></td><td><b>↓</b>（严重时心肌收缩无力）</td></tr><tr><td><b>心电图 ★</b></td><td><span class="hl">特征：<b>T 波低平或倒置、ST 段压低、U 波增高（有时 U 波 &gt; T 波）、Q-U 间期延长</b></span><br>（注意：低钾延长的是 <b>Q-U</b> 而非真正的 Q-T）</td></tr><tr><td><b>心律失常</b></td><td>期前收缩、心动过速；严重 → <b>心室颤动</b><br><span class="hl"><b>低钾时心肌对洋地黄（地高辛）的敏感性显著增加，极易发生洋地黄中毒</b></span></td></tr></tbody></table></div>
+<div class="note"><span class="tag">为什么低钾时心肌与骨骼肌表现相反</span><p><b>骨骼肌</b>：超极化阻滞 → 兴奋性↓ → 软瘫。</p><p><b>心肌</b>：低钾使心肌膜对 K⁺ 通透性降低 → K⁺ 外流减少 → 静息电位负值减小（更接近阈电位）→ <b>兴奋性与自律性↑</b>。</p><p><span class="hl">这是理解「低钾患者既瘫痪又心律失常」的关键——同一血钾值，不同组织走不同的电生理途径。</span></p></div>
+<h4 class="mini-h" id="s10-4">（三）肾损害与酸碱失衡 ★</h4>
+<div class="tbl-wrap"><table><thead><tr><th>后果</th><th>机制与表现</th></tr></thead><tbody><tr><td><b>肾浓缩功能障碍</b></td><td>集合管上皮受损 → <b>多尿、夜尿增多、低比重尿</b><br>长期可致 <b>缺钾性肾病</b>（肾小管空泡变性）</td></tr><tr><td><b>代谢性碱中毒</b> ★</td><td><span class="hl">双向机制</span>：<br>① 细胞内 K⁺ 外移、细胞外 H⁺ 内移 → 细胞外 H⁺ 减少 → 碱中毒<br>② 肾小管 <b>K⁺-Na⁺ 交换减少</b>、<b>H⁺-Na⁺ 交换增多</b> → H⁺ 排出增多 → 加重碱中毒</td></tr><tr><td><b><span class="hl">反常性酸性尿</span></b> ★★★</td><td><span class="hl">低钾 → 代谢性碱中毒，但 <b>尿却呈酸性</b></span><br>机制：肾小管为保 Na⁺ 而优先排 H⁺（因缺 K⁺ 无法进行 K⁺-Na⁺ 交换）<br><br>这是区别于其他碱中毒（尿应碱性）的 <b>标志性特征</b>，也是经典考点</td></tr></tbody></table></div>
+<h3 class="sub-h" id="s10-5">10.3 补钾原则（★必背）</h3>
+<div class="grid g2"><div class="mini"><h4><span class="dot"></span>① 途径</h4><p><b>首选口服</b>（氯化钾口服液 / 缓释片），安全、经济</p><p>严重或无法口服才 <b>静脉补钾</b></p><p><b>治疗原发病</b> 是根本（停利尿剂、纠腹泻等）</p></div><div class="mini"><h4><span class="dot"></span>② 静脉补钾五原则 ★</h4><p><span class="hl"><b>1. 见尿补钾</b>：尿量 &gt; 40 ml/h 才可补</span></p><p><b>2. 浓度不过高</b>：一般 ≤ 0.3%（即 ≤ 40 mmol/L）</p><p><b>3. 速度不过快</b>： ≤ 10–20 mmol/h</p><p><b>4. 剂量不过大</b>：每日 3–6 g KCl（严重可适当增加，需监测）</p><p><span class="hl"><b>5. 禁止静脉推注</b>（可致心脏骤停）</span></p></div></div>
+<div class="fix"><span class="tag">危险警告</span><s>静脉推注氯化钾快速纠正低钾</s> → <span class="to">必须稀释后缓慢静脉滴注，<b>严禁直接静脉推注</b></span> <span style="color:#5a6b7d">— 钾离子直接注入可瞬间造成心肌传导阻滞、心搏骤停，属于绝对禁忌</span></div></section>
+<section class="card" id="s11"><div class="sec-head"><div class="chip">11</div><h2>十一、高钾血症（原稿完全缺失）★ <span class="en">Hyperkalemia</span></h2></div><div class="add"><span class="tag">重大补缺</span><span class="hl"><b>原稿完全未涉及高钾血症。</b></span> 尽管课时占比不如低钾，但高钾的 <b>致死性最强</b>（心跳骤停），是急诊必争项，务必掌握。</div>
+<div class="tbl-wrap"><table><thead><tr><th>项目</th><th>要点</th></tr></thead><tbody><tr><td><b>定义</b></td><td><b>血清钾 &gt; 5.5 mmol/L</b></td></tr><tr><td><b>危险性</b></td><td><span class="hl">高钾血症最主要的危害是 <b>心脏毒性</b>，可致 <b>心室颤动 / 心跳骤停</b></span></td></tr></tbody></table></div>
+<h3 class="sub-h" id="s11-0">11.1 原因与机制</h3>
+<div class="grid g2"><div class="mini"><h4><span class="dot"></span>① 摄入过多</h4><p><b>静脉补钾过多过快</b>（违反上述原则）</p><p><b>输入大量库存血</b>（库存血随时间延长红细胞内钾外漏，2 周血钾可达 15–20 mmol/L）</p><p>⚠️ 肾功能正常者单纯口服极少致高钾</p></div><div class="mini"><h4><span class="dot"></span>② 排出减少（最常见）</h4><p><b>急 / 慢性肾衰竭</b>（特别是少尿、无尿）← <span class="hl"><b>临床上最常见的原因</b></span></p><p><b>醛固酮缺乏</b>：Addison 病、低肾素低醛固酮血症</p><p><b>保钾利尿剂</b>：螺内酯、氨苯蝶啶；ACEI / ARB</p><p>（与钾剂合用、用于肾功不全者极危险）</p></div><div class="mini"><h4><span class="dot"></span>③ 细胞内钾外移</h4><p><b>酸中毒</b>（H⁺ 入细胞、K⁺ 出细胞）</p><p><b>胰岛素缺乏</b>（DKA 时血钾常很高，尽管总钾亏空）</p><p><b>大量溶血、挤压伤、烧伤、肿瘤溶解综合征</b></p><p>β 受体阻滞剂、洋地黄中毒（抑制 Na⁺-K⁺ 泵）</p><p>高钾型周期性麻痹</p></div><div class="mini"><h4><span class="dot"></span>④ 假性高钾（注意）</h4><p><b>采血时溶血</b>、标本放置过久、血小板显著增多（体外释放钾）</p><p><span class="hl"><b>遇到「高钾」但无心电图改变、无临床症状时，首先怀疑假性高钾，复查</b></span></p></div></div>
+<h3 class="sub-h" id="s11-1">11.2 对机体的影响</h3>
+<h4 class="mini-h" id="s11-2">（一）神经肌肉</h4>
+<div class="tbl-wrap"><table><thead><tr><th>程度</th><th>表现与机制</th></tr></thead><tbody><tr><td><b>轻度（5.5–7 mmol/L）</b></td><td>静息电位负值 <b>减小</b> → 更接近阈电位 → <span class="hl"><b>兴奋性↑</b></span><br>表现：<b>手足感觉异常、肢体刺痛、肌肉震颤、乏力</b></td></tr><tr><td><b>重度（&gt; 7 mmol/L）</b></td><td>静息电位过小 → <b>Na⁺ 通道失活</b> → <span class="hl"><b>去极化阻滞</b></span> → 兴奋性↓<br>表现：<b>肌无力、弛缓性瘫痪</b>（由下肢向上发展，可累及呼吸肌）</td></tr></tbody></table></div>
+<h4 class="mini-h" id="s11-3">（二）心肌——最危险 ★</h4>
+<div class="tbl-wrap"><table><thead><tr><th>项目</th><th>变化</th></tr></thead><tbody><tr><td><b>兴奋性</b></td><td>轻度时↑，重度时↓</td></tr><tr><td><b>传导性</b></td><td><b>↓</b>（PR 延长、QRS 增宽）</td></tr><tr><td><b>自律性</b></td><td><b>↓</b></td></tr><tr><td><b>收缩性</b></td><td><b>↓</b></td></tr><tr><td><b>心电图演变 ★</b></td><td><span class="hl"><b>T 波高尖（呈「帐篷样」T 波）</b> ← 最早出现</span><br>→ P-R 间期延长、P 波低平或消失<br>→ QRS 波群增宽<br>→ 严重时出现 <b>正弦波</b>（QRS 与 T 融合）<br>→ → <span class="hl"><b>心室颤动 / 心搏骤停</b></span></td></tr></tbody></table></div>
+<h4 class="mini-h" id="s11-4">（三）酸碱失衡</h4>
+<div class="note"><span class="tag">与低钾方向完全相反</span><p>高钾血症 → <span class="hl"><b>代谢性酸中毒 + 反常性碱性尿</b></span></p><p>- 机制：细胞外 K⁺ ↑ → K⁺ 入细胞、H⁺ 出细胞 → 细胞外 H⁺ ↑ → 酸中毒</p><p>- 肾小管：<b>K⁺-Na⁺ 交换↑</b>、<b>H⁺-Na⁺ 交换↓</b> → H⁺ 排出减少</p><p>- 故尽管血呈酸性，<span class="hl"><b>尿却呈碱性</b></span></p><p><b>对照记忆</b>：</p><p>- 低钾 → 碱中毒 + <b>酸性尿</b></p><p>- 高钾 → 酸中毒 + <b>碱性尿</b></p></div>
+<h3 class="sub-h" id="s11-5">11.3 急救处理（★急诊必考）</h3>
+<div class="note"><span class="tag">处理指征</span><span class="hl"><b>血清钾 &gt; 6.5 mmol/L，或出现任何心电图改变（尤其 T 波高尖），应立即启动紧急处理。</b></span></div>
+<div class="tbl-wrap"><table><thead><tr><th>顺序</th><th>措施</th><th>要点</th></tr></thead><tbody><tr><td><b>1</b> ★</td><td><b>静脉钙剂</b></td><td><b>10% 葡萄糖酸钙 10–20 ml 缓慢静推</b>（数分钟起效）<br><span class="hl"><b>作用：稳定心肌细胞膜、对抗钾的心脏毒性；但它并不降低血钾</b></span><br>这是 <b>最关键的第一步</b>，先保命</td></tr><tr><td><b>2</b></td><td><b>胰岛素 + 葡萄糖</b></td><td><b>10% GS 500 ml + 普通胰岛素 12 U</b>（或 25% GS 40 ml + 胰岛素 6 U）静滴<br>促进 K⁺ 进入细胞，约 30 min 起效，持续 4–6 h</td></tr><tr><td><b>3</b></td><td><b>碳酸氢钠</b></td><td><b>5% NaHCO₃ 或者 11.2%乳酸钠</b>静滴<br>碱化血液 → 促 K⁺ 入细胞；尤适用于伴酸中毒者</td></tr><tr><td><b>4</b></td><td><b>β₂ 受体激动剂</b></td><td>沙丁胺醇雾化吸入（10–20 mg）促 K⁺ 入细胞</td></tr><tr><td><b>5</b></td><td><b>阳离子交换树脂</b></td><td>聚磺苯乙烯（Kayexalate）口服或灌肠——将钾从肠道排出（起效慢）</td></tr><tr><td><b>6</b> ★</td><td><b>透析</b></td><td><span class="hl"><b>血液透析 / 腹膜透析 是最有效、最根本的手段</b></span><br>适用于肾衰竭、上述措施无效者</td></tr><tr><td><b>辅助</b></td><td><b>停用钾源</b></td><td>立即停用钾剂、保钾利尿剂、ACEI/ARB；控制含钾食物与药物</td></tr></tbody></table></div>
+<div class="note"><span class="tag">为什么先给钙</span><p><span class="hl"><b>钙剂不降钾，但能保命。</b></span></p><p>高钾的致命危险在于心肌 —— 钙离子提高阈电位（恢复静息电位与阈电位的正常差距），直接对抗钾对心肌的毒性，起效 <b>数分钟内</b>。</p><p>而胰岛素、碳酸氢钠等措施降低血钾需要 <b>30 min 以上</b>。因此在等待「降钾」起效前，必须先用钙剂「护心」。</p><p><span class="hl">处理顺序具有强制性：先稳膜（钙），再降钾（胰岛素/碱性/利尿/透析）。</span></p></div></section>
+<section class="card" id="s12"><div class="sec-head"><div class="chip">12</div><h2>十二、低钾 vs 高钾 终极对比 <span class="en">Potassium comparison</span></h2></div><div class="tbl-wrap"><table><thead><tr><th>对比项</th><th>低钾血症</th><th>高钾血症</th></tr></thead><tbody><tr><td><b>血清钾</b></td><td><b>&lt; 3.5 mmol/L</b></td><td><b>&gt; 5.5 mmol/L</b></td></tr><tr><td><b>神经肌肉</b> ★</td><td><span class="hl"><b>兴奋性↓ → 弛缓性瘫痪（软瘫）</b></span><br>腹胀、麻痹性肠梗阻、反射减弱</td><td>轻度兴奋性↑（感觉异常、震颤）<br>重度兴奋性↓（去极化阻滞→软瘫）</td></tr><tr><td><b>心肌兴奋性</b></td><td><b>↑</b></td><td>轻度↑，重度↓</td></tr><tr><td><b>心电图 ★</b></td><td><b>T 波低平/倒置、U 波增高、ST 压低、Q-U 延长</b></td><td><span class="hl"><b>T 波高尖（帐篷样）</b></span>、PR 延长、P 波消失、QRS 增宽→正弦波</td></tr><tr><td><b>致命后果</b></td><td>心室颤动、呼吸肌麻痹</td><td><span class="hl"><b>心室颤动 / 心搏骤停</b>（更危急）</span></td></tr><tr><td><b>酸碱失衡 ★</b></td><td><b>代谢性碱中毒</b></td><td><b>代谢性酸中毒</b></td></tr><tr><td><b>尿液酸碱性 ★</b></td><td><span class="hl"><b>反常性酸性尿</b></span></td><td><span class="hl"><b>反常性碱性尿</b></span></td></tr><tr><td><b>心肌对洋地黄</b></td><td><span class="hl"><b>敏感性↑，易中毒</b></span></td><td>——</td></tr><tr><td><b>治疗核心</b></td><td>补钾（口服优先；静滴见尿补钾、禁推注）</td><td>先 <b>钙剂稳膜</b>，再胰岛素+糖 / 碱剂 / 利尿 / <b>透析</b></td></tr></tbody></table></div>
+<div class="note"><span class="tag">反常性尿记忆法</span><p><span class="hl"><b>「低钾碱中毒、酸性尿；高钾酸中毒、碱性尿」</b></span></p><p>记忆关键：<b>血的变化与尿的变化方向永远相反</b> —— 因为肾小管在 K⁺ 与 H⁺ 之间进行的是 <b>竞争性交换</b>（K⁺-Na⁺ vs H⁺-Na⁺）。</p><p>- 低钾 → 无法排 K⁺ → 只能多排 H⁺ → 尿变酸、血变碱</p><p>- 高钾 → 大量排 K⁺ → H⁺ 排出少 → 尿变碱、血变酸</p></div></section>
+<section class="card" id="s13"><div class="sec-head"><div class="chip">13</div><h2>十三、考点速记 <span class="en">Key points</span></h2></div><h3 class="sub-h" id="s13-0">13.1 必背数值</h3>
+<div class="grid g2"><div class="mini"><h4><span class="dot"></span>渗透压与水量</h4><p>血浆渗透压 <b>280–310 mmol/L</b></p><p>每日出入量 <b>2000–2500 ml</b></p><p>不显性失水 <b>约 850 ml</b></p></div><div class="mini"><h4><span class="dot"></span>血钠</h4><p>正常 <b>135–145 mmol/L</b></p><p>低钠 <b>&lt; 135</b>；低渗性脱水 <b>&lt; 130</b></p><p>高钠 <b>&gt; 145</b>；高渗性脱水 <b>&gt; 150</b></p></div><div class="mini"><h4><span class="dot"></span>血钾</h4><p>正常 <b>3.5–5.5 mmol/L</b></p><p>低钾 <b>&lt; 3.5</b>；高钾 <b>&gt; 5.5</b></p><p>急诊降钾指征 <b>&gt; 6.5</b></p></div><div class="mini"><h4><span class="dot"></span>钾的分布与排泄</h4><p>总钾 <b>50–55 mmol/kg</b></p><p>细胞内 <b>约 98%</b>，血清仅约 <b>2%</b></p><p>摄入 <b>50–120 mmol/d</b></p><p>排泄：肾 <b>80–90%</b>、肠 <b>10%</b></p></div><div class="mini"><h4><span class="dot"></span>水肿</h4><p>隐性水肿体重增加可达 <b>10%</b></p><p>漏出液蛋白 <b>&lt; 25 g/L</b>、细胞 <b>&lt; 100×10⁶/L</b></p><p>渗出液蛋白 <b>&gt; 30 g/L</b>、细胞 <b>&gt; 500×10⁶/L</b></p></div><div class="mini"><h4><span class="dot"></span>纠正速度</h4><p>低钠纠正 ≤ <b>4–8 mmol/L/24h</b></p><p>高钠纠正 ≤ <b>10–12 mmol/L/24h</b></p></div></div>
+<h3 class="sub-h" id="s13-1">13.2 一句话鉴别</h3>
+<ul><li><b>是否口渴</b>：有口渴 → 高渗性 / 等渗性；无口渴 → <b>低渗性</b></li><li><b>休克早晚</b>：早休克 → <b>低渗性</b>；晚休克 → 高渗性</li><li><b>尿量早晚</b>：早多尿晚少尿 → <b>低渗性</b>（两套感受器打架的结果）</li><li><b>补液选择</b>：低钠补 <b>等渗</b>；高钠补 <b>低渗/糖水</b>；等钠补 <b>平衡盐</b></li><li><b>心电图</b>：U 波增高 → <b>低钾</b>；T 波高尖 → <b>高钾</b></li><li><b>尿液</b>：低钾 <b>酸性尿</b>（伴碱中毒）；高钾 <b>碱性尿</b>（伴酸中毒）</li><li><b>水肿起始部位</b>：眼睑开始 → <b>肾性</b>；足踝向上 → <b>心性</b>；腹水为主 → <b>肝性</b></li></ul>
+<h3 class="sub-h" id="s13-2">13.3 水肿机制五问自查</h3>
+<div class="flow"><span class="node">① 毛细血管流体静压↑？（心衰、静脉阻塞）</span><span class="arrow">→</span><span class="node">② 血浆胶体渗透压↓？（肝病、肾病、营养不良）</span><span class="arrow">→</span><span class="node">③ 微血管通透性↑？（炎症、过敏、烧伤）</span><span class="arrow">→</span><span class="node">④ 淋巴回流受阻？（丝虫病、肿瘤压迫）</span><span class="arrow">→</span><span class="node">⑤ 肾水钠潴留？（GFR↓ / RAAS↑ / ANP↓）</span></div></section>
+<section class="card" id="s14"><div class="sec-head"><div class="chip">14</div><h2>十四、原稿勘误与补缺说明 <span class="en">Corrections</span></h2></div><div class="tbl-wrap"><table><thead><tr><th>序号</th><th>原稿问题</th><th>订正 / 补充</th></tr></thead><tbody><tr><td>1</td><td>失钠大于失水，<b>扳手</b>细胞外液量减少</td><td>应为「<b>伴</b>细胞外液量减少」（识别/笔误）</td></tr><tr><td>2</td><td>血浆胶体渗透压降低：蛋白质合成<b>减小</b></td><td>规范表述为「蛋白质合成 <b>减少</b>」</td></tr><tr><td>3</td><td><b>漏出液（有细胞出现）</b></td><td><span class="hl"><b>知识性错误</b></span>：漏出液 <b>蛋白少、细胞少</b>；渗出液才富含蛋白与细胞</td></tr><tr><td>4</td><td>促进滤过力 / 促进回流力</td><td>教材规范术语为「<b>促使滤过的力量</b>」与「<b>促使回流的力量</b>」</td></tr><tr><td>5</td><td>原稿在「高渗性脱水——防治：」下留白</td><td>已补全：<b>以补水为主</b>，首选 5% 葡萄糖或 0.45% 盐水，缓慢纠正</td></tr><tr><td>6</td><td>原稿缺 <b>等渗性脱水</b></td><td><span class="hl">已完整新增（第 五 节）</span>，含定义、数值、病因、双向转化、补液选择</td></tr><tr><td>7</td><td>原稿缺 <b>低钾血症</b>（仅有标题）</td><td><span class="hl">已完整新增（第 十 节）</span>，含三大病因、神经肌肉/心肌/肾三系统表现、反常性酸性尿、补钾五原则</td></tr><tr><td>8</td><td>原稿缺 <b>高钾血症</b></td><td><span class="hl">已完整新增（第 十一 节）</span>，含三大病因、心电图演变、急救六步</td></tr><tr><td>9</td><td>原稿未给三类脱水对比表</td><td>已新增横向对比表（第 六 节）</td></tr></tbody></table></div>
+<div class="add"><span class="tag">学习方法建议</span><p>本章的最佳切入点是 <span class="hl"><b>「血钠定类型、容量定程度」</b></span> 与 <span class="hl"><b>「先-EKG 后-补液」</b></span> 两条主线。</p><p>建议顺序：</p><p>1. 先背 <b>三个脱水的核心数值</b>（130 / 150 / 正常），建立骨架；</p><p>2. 再用 <b>「口渴 — 休克早晚 — 尿量」</b> 三指标做床旁鉴别；</p><p>3. 钾的部分单独攻 —— 重点抓 <b>心电图</b> 与 <b>反常性尿</b> 两组对应；</p><p>4. 最后统一刷 <b>治疗/补液选择</b>，这是区分高分与及格的分水岭。</p></div></section>
+    </main>
+  </div>
+</div>
+
+<a class="back" href="#top" title="返回顶部">↑</a>
+
+<footer>
+  <p>病理生理学（第 10 版）· 水、电解质代谢紊乱 精编笔记　·　Rendered by notes_htmlizer</p>
+  <p style="font-size:12px;">三色标注：<span style="color:#0b7285">■</span> 补齐/新增　<span style="color:#b45309">■</span> 原稿订正　<span style="color:#d4a017">■</span> 考试重点</p>
+</footer>
+
+<script>
+(function(){
+  var card = document.querySelector('nav.toc');
+  var box = card ? card.querySelector('.links') : null;
+  var input = card ? card.querySelector('.toc-search input') : null;
+  var cnt = card ? card.querySelector('.toc-search .cnt') : null;
+  var bar = document.querySelector('.pbar i');
+  if (!box) return;
+  var links = [].slice.call(box.querySelectorAll('.toc-item a'));
+  var items = [].slice.call(box.querySelectorAll('.toc-item'));
+  var parts = [].slice.call(box.querySelectorAll('.toc-part'));
+  function setPart(p, open) {
+    if (!p) return;
+    if (open) p.classList.add('open'); else p.classList.remove('open');
+  }
+
+  /* ---------- 分篇折叠 ---------- */
+  parts.forEach(function(p, i) {
+    var btn = p.querySelector('.ptog');
+    var link = p.querySelector('a.pt');
+    if (btn) btn.addEventListener('click', function(e) {
+      e.preventDefault(); e.stopPropagation();
+      setPart(p, !p.classList.contains('open'));
+    });
+    if (link) link.addEventListener('click', function() { setPart(p, true); });
+  });
+  /* 初始：只展开第一篇，其余收起（搜索时会自动展开命中篇） */
+  parts.forEach(function(p, i) { setPart(p, i === 0); });
+
+  /* ---------- 折叠 ---------- */
+  function setOpen(it, open) {
+    var sub = it.querySelector('.toc-sub');
+    if (!sub) return;
+    var btn = it.querySelector('.fold');
+    if (open) { sub.classList.add('open'); if (btn) btn.classList.add('open'); }
+    else { sub.classList.remove('open'); if (btn) btn.classList.remove('open'); }
+  }
+  function isOpen(it) {
+    var sub = it.querySelector('.toc-sub');
+    return !!sub && sub.classList.contains('open');
+  }
+  items.forEach(function(it) {
+    var btn = it.querySelector('.fold');
+    if (!btn) return;
+    btn.addEventListener('click', function(e) {
+      e.preventDefault(); e.stopPropagation();
+      setOpen(it, !isOpen(it));
+    });
+  });
+
+  /* ---------- 搜索 ---------- */
+  function textOf(el) { return (el.textContent || '').toLowerCase(); }
+  function search(kw) {
+    kw = kw.trim().toLowerCase();
+    var hits = 0;
+    if (!kw) {
+      items.forEach(function(it) {
+        it.classList.remove('hide');
+        [].forEach.call(it.querySelectorAll('.toc-sub a'), function(a) { a.classList.remove('hide'); });
+        setOpen(it, false);
+      });
+      if (card) card.classList.remove('no-result');
+      if (cnt) cnt.textContent = '';
+      return;
+    }
+    items.forEach(function(it) {
+      var row = it.querySelector('.toc-row a');
+      var selfHit = row && textOf(row).indexOf(kw) >= 0;
+      var subs = [].slice.call(it.querySelectorAll('.toc-sub a'));
+      var subHit = 0;
+      subs.forEach(function(a) {
+        var m = textOf(a).indexOf(kw) >= 0;
+        if (m || selfHit) { a.classList.remove('hide'); } else { a.classList.add('hide'); }
+        if (m) subHit++;
+      });
+      if (selfHit || subHit) {
+        it.classList.remove('hide');
+        setOpen(it, subs.length > 0);
+        hits += (selfHit ? 1 : 0) + subHit;
+      } else {
+        it.classList.add('hide');
+        setOpen(it, false);
+      }
+    });
+    if (cnt) cnt.textContent = hits ? hits + ' 条' : '';
+    if (card) {
+      if (hits) card.classList.remove('no-result');
+      else card.classList.add('no-result');
+    }
+    if (parts.length) {
+      parts.forEach(function(p, i) {
+        if (!kw) {
+          p.classList.remove('hide');
+          setPart(p, i === 0);
+          return;
+        }
+        var vis = [].slice.call(p.querySelectorAll('.toc-item')).filter(function(it) {
+          return !it.classList.contains('hide');
+        });
+        if (vis.length) { p.classList.remove('hide'); setPart(p, true); }
+        else { p.classList.add('hide'); setPart(p, false); }
+      });
+    }
+  }
+  if (input) {
+    var timer = null;
+    input.addEventListener('input', function() {
+      if (timer) window.clearTimeout(timer);
+      var v = input.value;
+      timer = window.setTimeout(function() { search(v); }, 90);
+    });
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { input.value = ''; search(''); input.blur(); }
+    });
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === '/' && document.activeElement !== input) {
+      e.preventDefault(); if (input) input.focus();
+    }
+  });
+
+  /* ---------- 高亮跟随 ---------- */
+  function targetOf(a) { return document.querySelector(a.getAttribute('href')); }
+  function clearActive() {
+    links.forEach(function(a) { a.classList.remove('active'); });
+  }
+  function keepVisible(el) {
+    if (!el || box.scrollHeight <= box.clientHeight + 2) return;
+    var top = el.offsetTop - box.offsetTop;
+    var bottom = top + el.offsetHeight;
+    if (top < box.scrollTop + 6) {
+      box.scrollTo({ top: Math.max(0, top - 6), behavior: 'smooth' });
+    } else if (bottom > box.scrollTop + box.clientHeight - 6) {
+      box.scrollTo({ top: bottom - box.clientHeight + 6, behavior: 'smooth' });
+    }
+  }
+  function spy() {
+    var idx = -1;
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].classList.contains('hide')) continue;
+      var el = targetOf(links[i]);
+      if (el && el.getBoundingClientRect().top <= 140) idx = i;
+    }
+    clearActive();
+    if (idx < 0) return;
+    var a = links[idx];
+    a.classList.add('active');
+    /* 高亮项所在篇若被收起，则自动展开（搜索中不打断） */
+    if (parts.length && (!input || !input.value)) {
+      var pp = a.closest ? a.closest('.toc-part') : null;
+      if (pp) setPart(pp, true);
+    }
+    /* 小节被高亮时，父章节也标亮并自动展开 */
+    if (a.classList.contains('sub')) {
+      var parent = a.closest('.toc-item');
+      var row = parent ? parent.querySelector('.toc-row a') : null;
+      if (row) row.classList.add('active');
+      if (!input || !input.value) setOpen(parent, true);
+      keepVisible(a);
+    } else {
+      keepVisible(a);
+    }
+  }
+
+  /* ---------- 阅读进度 ---------- */
+  function progress() {
+    if (!bar) return;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? window.scrollY / h : 0;
+    if (p < 0) p = 0; if (p > 1) p = 1;
+    bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function() { ticking = false; spy(); progress(); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function() { spy(); progress(); }, { passive: true });
+  spy();
+  progress();
+})();
+</script>
+
+</body>
+</html>
